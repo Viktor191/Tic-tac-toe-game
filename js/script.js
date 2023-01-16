@@ -26,11 +26,11 @@ function renderCell(cellIndex, rowIndex, state = 0, size = 50) {
     newDiv.dataset.row = rowIndex
     newDiv.dataset.cell = cellIndex
 
-    if (state === 1) {
+    if (state === false) {
         newDiv.innerText = 'X'
     }
 
-    if (state === 2) {
+    if (state === true) {
         newDiv.innerText = 'O'
     }
 
@@ -42,7 +42,16 @@ function renderCell(cellIndex, rowIndex, state = 0, size = 50) {
 document.addEventListener('click', (event) => {
     const rowIndex = event.target.dataset.row
     const cellIndex = event.target.dataset.cell
-    grid[rowIndex][cellIndex] = 2
+    
+    let fn = (function() {
+        let numberOfCalls = 0;
+        return function() {
+           return Number.isInteger(++ numberOfCalls / 2)
+        }
+     })();
+
+    grid[rowIndex][cellIndex] = fn()
+   
    
    
    
