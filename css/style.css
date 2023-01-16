@@ -1,0 +1,12 @@
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: grey;
+    position: fixed;
+    text-align: center;
+    font-size: 50px;
+    /* left: 100px;
+    top: 200px; */
+    border: 1px solid black;
+}
