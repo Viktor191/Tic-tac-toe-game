@@ -66,62 +66,47 @@ document.addEventListener('click', (event) => {
 
     renderGrid(grid)
     //-----------------------------------------------
+
     function checkWinHorizontal(grid) {
-        let win = 0
-        let a = 0
-        let i = 0
-        for (let i = 0; i < grid.length; i++) {
-            if (grid[a][i] === false) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('X is the winner ! Horizontal 1');
+        for (let a = 0; a < grid.length; a++) {
+            let win1 = 0
+            let win2 = 0
+            for (let i = 0; i < grid.length; i++) {
+                if (grid[a][i] === false) {
+                    win1 = win1 + 1
+                    if (win1 === grid.length) {
+                        console.log('X is the winner ! Horizontal ' + a);
+                    }
+                } else if (grid[a][i] === true) {
+                    win2 = win2 + 1
+                    if (win2 === grid.length) {
+                        console.log('O is the winner! Horizontal ' + a);
+                    }
                 }
-            } else if (grid[a][i] === true) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('O is the winner! Horizontal 1');
+            }
+        }
+    }
+    //-----------------------------------------------
+    function checkWinVertical(grid) {
+        for (let a = 0; a < grid.length; a++) {
+            let win1 = 0
+            let win2 = 0
+            for (let i = 0; i < grid.length; i++) {
+                if (grid[i][a] === false) {
+                    win1 = win1 + 1
+                    if (win1 === grid.length) {
+                        console.log('X is the winner! Vertical ' + a);
+                    }
+                } else if (grid[i][a] === true) {
+                    win2 = win2 + 1
+                    if (win2 === grid.length) {
+                        console.log('O is the winner! Vertical ' + a);
+                    }
                 }
             }
         }
     }
 
-    function checkWinHorizontal1(grid) {
-        let win = 0
-        let a = 1
-        //let i = 0
-        for (let i = 0; i < grid.length; i++) {
-            if (grid[a][i] === false) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('X is the winner! Horizontal 2');
-                }
-            } else if (grid[a][i] === true) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('O is the winner! Horizontal 2');
-                }
-            }
-        }
-    }
-
-    function checkWinHorizontal2(grid) {
-        let win = 0
-        let a = 2
-        //let i = 0
-        for (let i = 0; i < grid.length; i++) {
-            if (grid[a][i] === false) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('X is the winner! Horizontal 3');
-                }
-            } else if (grid[a][i] === true) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('O is the winner! Horizontal 3');
-                }
-            }
-        }
-    }
     //-----------------------------------------------
     function checkWinDiagonal1(grid) {
         let win = 0
@@ -162,68 +147,13 @@ document.addEventListener('click', (event) => {
         }
     }
     //-----------------------------------------------
-    function checkWinVertical(grid) {
-        let win = 0
-        let a = 0
-        for (let i = 0; i < grid.length; i++) {
-            if (grid[i][a] === false) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('X is the winner! Vertical');
-                }
-            } else if (grid[i][a] === true) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('O is the winner! Vertical');
-                }
-            }
-        }
-    }
-    function checkWinVertical1(grid) {
-        let win = 0
-        let a = 1
-        for (let i = 0; i < grid.length; i++) {
-            if (grid[i][a] === false) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('X is the winner! Vertical 1');
-                }
-            } else if (grid[i][a] === true) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('O is the winner! Vertical 1');
-                }
-            }
-        }
-    }
-    function checkWinVertical2(grid) {
-        let win = 0
-        let a = 2
-        for (let i = 0; i < grid.length; i++) {
-            if (grid[i][a] === false) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('X is the winner! Vertical 2');
-                }
-            } else if (grid[i][a] === true) {
-                win = win + 1
-                if (win === 3) {
-                    console.log('O is the winner! Vertical 2');
-                }
-            }
-        }
-    }
-    //-----------------------------------------------
-    checkWinHorizontal(grid)
-    checkWinHorizontal1(grid)
-    checkWinHorizontal2(grid)
 
     checkWinDiagonal1(grid)
     checkWinDiagonal2(grid)
 
+    checkWinHorizontal(grid)
     checkWinVertical(grid)
-    checkWinVertical1(grid)
-    checkWinVertical2(grid)
+    //-----------------------------------------------
 
     /*if(grid[0][0] === false && grid[0][1] === false && grid[0][2] === false) {
         alert('X is the winner!')
